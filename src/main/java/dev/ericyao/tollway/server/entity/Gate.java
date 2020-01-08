@@ -10,18 +10,17 @@ public class Gate {
 	@Id
 	@NotNull
 	private long gateId;
-	
 	@NotNull
-	private int gateType;
+	private int tollInCents;
 	
 	public Gate() {
 		
 	}
 
-	public Gate(@NotNull long gateId, @NotNull int gateType) {
+	public Gate(@NotNull long gateId, int tollInCents) {
 		super();
 		this.gateId = gateId;
-		this.gateType = gateType;
+		this.tollInCents = tollInCents;
 	}
 
 	public long getGateId() {
@@ -32,13 +31,12 @@ public class Gate {
 		this.gateId = gateId;
 	}
 
-	public int getGateType() {
-		return gateType;
+	public int getTollInCents() {
+		return tollInCents;
 	}
 
-	public void setGateType(int gateType) {
-		this.gateType = gateType;
+	public void setTollInCents(int tollInCents) {
+		this.tollInCents = tollInCents;
 	}
-	
 	
 }

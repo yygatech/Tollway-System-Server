@@ -1,10 +1,6 @@
 package dev.ericyao.tollway.server.controller;
 
-import java.util.NoSuchElementException;
-import java.util.Random;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.ericyao.tollway.server.entity.Transaction;
-import dev.ericyao.tollway.server.entity.Vehicle;
 import dev.ericyao.tollway.service.TransactionService;
 
 @RestController

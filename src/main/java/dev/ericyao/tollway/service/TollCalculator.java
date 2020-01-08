@@ -12,7 +12,7 @@ public class TollCalculator {
 	
 	Random rand = new Random();
 	
-	public float calculate(Transaction trans) {
-		return rand.nextFloat() * 10;
+	public int calculate(Transaction trans) {
+		return rand.nextInt(1000);
 	}
 }

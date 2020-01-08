@@ -20,7 +20,7 @@ public class Transaction {
 	@SequenceGenerator(name = "transaction_gen", sequenceName = "transaction_seq", allocationSize = 1)
 	@NotNull
 	private long transactionId;
-	float toll;
+	int tollInCents;
 	
 	// car-related
 	@NotNull
@@ -29,7 +29,6 @@ public class Transaction {
 	private Long tollTagId;
 	
 	// gate-related
-	private int gateType;
 	@NotNull
 	private long gateId;
 	@NotNull
@@ -42,13 +41,12 @@ public class Transaction {
 		
 	}
 
-	public Transaction(String vehicleId, boolean registered, Long tollTagId, int gateType, long gateId, int laneId,
+	public Transaction(String vehicleId, boolean registered, Long tollTagId, long gateId, int laneId,
 			Date timestamp) {
 		super();
 		this.vehicleId = vehicleId;
 		this.registered = registered;
 		this.tollTagId = tollTagId;
-		this.gateType = gateType;
 		this.gateId = gateId;
 		this.laneId = laneId;
 		this.timestamp = timestamp;
@@ -60,11 +58,11 @@ public class Transaction {
 	public void setTransactionId(long transactionId) {
 		this.transactionId = transactionId;
 	}
-	public float getToll() {
-		return toll;
+	public int getTollInCents() {
+		return tollInCents;
 	}
-	public void setToll(float toll) {
-		this.toll = toll;
+	public void setTollInCents(int tollInCents) {
+		this.tollInCents = tollInCents;
 	}
 	public boolean isRegistered() {
 		return registered;
@@ -83,12 +81,6 @@ public class Transaction {
 	}
 	public void setVehicleId(String vehicleId) {
 		this.vehicleId = vehicleId;
-	}
-	public int getGateType() {
-		return gateType;
-	}
-	public void setGateType(int gateType) {
-		this.gateType = gateType;
 	}
 	public long getGateId() {
 		return gateId;

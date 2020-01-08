@@ -46,7 +46,7 @@ public class TransactionService {
 		}
 		
 		// calculate toll
-		trans.setToll(tc.calculate(trans));
+		trans.setTollInCents(tc.calculate(trans));
 		
 		// TODO: toll charge/bill service
 		
