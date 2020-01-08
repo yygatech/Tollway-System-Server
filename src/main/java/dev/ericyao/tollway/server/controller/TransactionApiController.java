@@ -1,5 +1,8 @@
 package dev.ericyao.tollway.server.controller;
 
+import java.util.NoSuchElementException;
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
@@ -12,60 +15,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.ericyao.tollway.server.Server;
-import dev.ericyao.tollway.server.ServerQueue;
-import dev.ericyao.tollway.server.dao.TransactionRepository;
 import dev.ericyao.tollway.server.entity.Transaction;
+import dev.ericyao.tollway.server.entity.Vehicle;
+import dev.ericyao.tollway.service.TransactionService;
 
 @RestController
-@RequestMapping("/server")
-public class ServerMainApiController {
+@RequestMapping("/transaction")
+public class TransactionApiController {
 	
 	@Autowired
-	Server server;
-	
-	@Autowired
-	ServerQueue serverQueue;
-	
-	@Autowired
-	TransactionRepository transRepo;
+	TransactionService tService;
 	
 	@GetMapping
 	public Iterable<Transaction> getTransactions() {
-		return transRepo.findAll();
+		return tService.getTransactions();
 	}
 	
 	@GetMapping("/{id}")
 	public Transaction getTransactionById(@PathVariable("id") long id) {
-		return transRepo.findById(id).get();
+		return tService.getTransactionById(id);
 	}
 	
 	@PostMapping(consumes = "application/json")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Transaction processRequest(@RequestBody Transaction trans) {
-		
-		// calculate toll
-		float toll = calculateToll(trans);
-		trans.setToll(toll);
-		
-		// save to database
-		transRepo.save(trans);
-		
-		return trans;
+	public Transaction processTransaction(@RequestBody Transaction trans) {
+		return tService.processTransaction(trans);
 	}
 	
 	@DeleteMapping("/{id}")
-	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@ResponseStatus(HttpStatus.NO_CONTENT)	// TODO: different result 
 	public void deleteTransaction(@PathVariable("id") long id) {
-		try {
-			transRepo.deleteById(id);
-		} catch (EmptyResultDataAccessException ex) {
-//			ex.printStackTrace();
-		}
-	}
-	
-	// TODO: toll calculator
-	private float calculateToll(Transaction trans) {
-		return 0.1f;
+		boolean res = tService.deleteTransaction(id);
 	}
 }

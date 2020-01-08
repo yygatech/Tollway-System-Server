@@ -3,27 +3,38 @@ package dev.ericyao.tollway.server.entity;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Transaction {
 	
 	// transaction-related
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "transaction_gen")
+	@SequenceGenerator(name = "transaction_gen", sequenceName = "transaction_seq", allocationSize = 1)
+	@NotNull
 	private long transactionId;
 	float toll;
 	
 	// car-related
+	@NotNull
 	private String vehicleId;
 	private boolean registered;
-	private long tollTagId;
+	private Long tollTagId;
 	
 	// gate-related
 	private int gateType;
+	@NotNull
 	private long gateId;
+	@NotNull
 	private int laneId;
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	Date timestamp;
 	
@@ -31,7 +42,7 @@ public class Transaction {
 		
 	}
 
-	public Transaction(String vehicleId, boolean registered, long tollTagId, int gateType, long gateId, int laneId,
+	public Transaction(String vehicleId, boolean registered, Long tollTagId, int gateType, long gateId, int laneId,
 			Date timestamp) {
 		super();
 		this.vehicleId = vehicleId;
@@ -61,10 +72,10 @@ public class Transaction {
 	public void setRegistered(boolean registered) {
 		this.registered = registered;
 	}
-	public long getTollTagId() {
+	public Long getTollTagId() {
 		return tollTagId;
 	}
-	public void setTollTagId(long tollTagId) {
+	public void setTollTagId(Long tollTagId) {
 		this.tollTagId = tollTagId;
 	}
 	public String getVehicleId() {
