@@ -5,7 +5,6 @@ drop table if exists vehicle;
 create table if not exists vehicle (
 	vehicle_id varchar(255) not null,
 	registered boolean,
-	toll_tag_id bigint,
 	primary key (vehicle_id)
 );
 
@@ -13,7 +12,7 @@ create table if not exists vehicle (
 drop table if exists gate;
 
 create table if not exists gate (
-	gate_id varchar(255) not null,
+	gate_id bigint not null,
 	toll_in_cents integer,
 	primary key (gate_id)
 );
@@ -29,10 +28,8 @@ create table if not exists transaction (
 	transaction_id bigint not null, 
 	gate_id bigint not null, 
 	lane_id integer not null, 
-	registered boolean, 
 	timestamp timestamp, 
 	toll_in_cents integer, 
-	toll_tag_id bigint, 
 	vehicle_id varchar(255), 
 	primary key (transaction_id)
 );

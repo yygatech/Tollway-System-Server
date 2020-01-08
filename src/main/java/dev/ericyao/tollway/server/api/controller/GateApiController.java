@@ -1,4 +1,4 @@
-package dev.ericyao.tollway.server.controller;
+package dev.ericyao.tollway.server.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +10,7 @@ import dev.ericyao.tollway.server.dao.GateRepository;
 import dev.ericyao.tollway.server.entity.Gate;
 
 @RestController
-@RequestMapping("/gate")
+@RequestMapping("/api/gate")
 public class GateApiController {
 
 	@Autowired

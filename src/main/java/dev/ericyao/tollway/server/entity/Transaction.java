@@ -25,8 +25,6 @@ public class Transaction {
 	// car-related
 	@NotNull
 	private String vehicleId;
-	private boolean registered;
-	private Long tollTagId;
 	
 	// gate-related
 	@NotNull
@@ -41,15 +39,12 @@ public class Transaction {
 		
 	}
 
-	public Transaction(String vehicleId, boolean registered, Long tollTagId, long gateId, int laneId,
-			Date timestamp) {
+	public Transaction(Event event) {
 		super();
-		this.vehicleId = vehicleId;
-		this.registered = registered;
-		this.tollTagId = tollTagId;
-		this.gateId = gateId;
-		this.laneId = laneId;
-		this.timestamp = timestamp;
+		this.vehicleId = event.getVehicleId();
+		this.gateId = event.getGateId();
+		this.laneId = event.getLaneId();
+		this.timestamp = event.getTimestamp();
 	}
 
 	public long getTransactionId() {
@@ -63,18 +58,6 @@ public class Transaction {
 	}
 	public void setTollInCents(int tollInCents) {
 		this.tollInCents = tollInCents;
-	}
-	public boolean isRegistered() {
-		return registered;
-	}
-	public void setRegistered(boolean registered) {
-		this.registered = registered;
-	}
-	public Long getTollTagId() {
-		return tollTagId;
-	}
-	public void setTollTagId(Long tollTagId) {
-		this.tollTagId = tollTagId;
 	}
 	public String getVehicleId() {
 		return vehicleId;

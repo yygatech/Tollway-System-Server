@@ -1,4 +1,4 @@
-package dev.ericyao.tollway.server.controller;
+package dev.ericyao.tollway.server.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.ericyao.tollway.server.entity.Transaction;
-import dev.ericyao.tollway.service.TransactionService;
+import dev.ericyao.tollway.server.service.TransactionService;
 
 @RestController
-@RequestMapping("/transaction")
+@RequestMapping("/api/transaction")
 public class TransactionApiController {
 	
 	@Autowired
@@ -34,12 +34,12 @@ public class TransactionApiController {
 	@PostMapping(consumes = "application/json")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Transaction processTransaction(@RequestBody Transaction trans) {
-		return tService.processTransaction(trans);
+		return tService.saveTransaction(trans);
 	}
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)	// TODO: different result 
 	public void deleteTransaction(@PathVariable("id") long id) {
-		boolean res = tService.deleteTransaction(id);
+		tService.deleteTransaction(id);
 	}
 }

@@ -1,4 +1,4 @@
-package dev.ericyao.tollway;
+package dev.ericyao.tollway.server;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;

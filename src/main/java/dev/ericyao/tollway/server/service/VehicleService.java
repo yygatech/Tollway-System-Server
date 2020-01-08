@@ -1,4 +1,4 @@
-package dev.ericyao.tollway.service;
+package dev.ericyao.tollway.server.service;
 
 import java.util.NoSuchElementException;
 
@@ -13,6 +13,10 @@ public class VehicleService {
 
 	@Autowired
 	VehicleRepository vRepo;
+	
+	public Iterable<Vehicle> getVehicles() {
+		return vRepo.findAll();
+	}
 	
 	public Vehicle getVehicleById(String id) {
 		try {

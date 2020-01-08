@@ -1,4 +1,4 @@
-package dev.ericyao.tollway.service;
+package dev.ericyao.tollway.server.service;
 
 import java.util.Random;
 
