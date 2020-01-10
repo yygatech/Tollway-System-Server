@@ -1,4 +1,4 @@
-package dev.ericyao.tollway.server.entity;
+package dev.ericyao.tollway.server.object;
 
 import java.util.Date;
 

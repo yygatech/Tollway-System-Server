@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.ericyao.tollway.server.entity.Event;
 import dev.ericyao.tollway.server.entity.Transaction;
+import dev.ericyao.tollway.server.object.Event;
 import dev.ericyao.tollway.server.service.EventService;
 
 @RestController

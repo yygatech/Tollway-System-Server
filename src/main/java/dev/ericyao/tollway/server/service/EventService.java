@@ -3,8 +3,8 @@ package dev.ericyao.tollway.server.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import dev.ericyao.tollway.server.entity.Event;
 import dev.ericyao.tollway.server.entity.Transaction;
+import dev.ericyao.tollway.server.object.Event;
 
 @Service
 public class EventService {

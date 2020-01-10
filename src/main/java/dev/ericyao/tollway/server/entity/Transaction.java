@@ -11,6 +11,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import dev.ericyao.tollway.server.object.Event;
+
 @Entity
 public class Transaction {
 	
