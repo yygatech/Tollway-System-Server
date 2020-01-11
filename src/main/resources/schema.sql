@@ -1,4 +1,20 @@
--- CREATE VEHICLE TABLE--
+-- CREATE USER_ACCOUNT TABLE --
+DROP SEQUENCE IF EXISTS user_account_seq CASCADE;
+
+CREATE SEQUENCE IF NOT EXISTS user_account_seq;
+
+drop table if exists user_account;
+
+create table if not exists user_account (
+	user_id bigint not null DEFAULT nextval('user_account_seq') PRIMARY KEY,
+	username varchar(255) NOT NULL UNIQUE,
+	email varchar(255) NOT NULL UNIQUE,
+	password varchar(255),
+	role varchar(255),
+	enabled boolean not null
+);
+
+-- CREATE VEHICLE TABLE --
 
 drop table if exists vehicle;
 
@@ -8,7 +24,7 @@ create table if not exists vehicle (
 	primary key (vehicle_id)
 );
 
--- CREATE GATE TABLE--
+-- CREATE GATE TABLE --
 drop table if exists gate;
 
 create table if not exists gate (
@@ -17,8 +33,8 @@ create table if not exists gate (
 	primary key (gate_id)
 );
 
--- CREATE TRANSACTION TABLE--
-drop sequence if exists transaction_seq;
+-- CREATE TRANSACTION TABLE --
+drop sequence if exists transaction_seq CASCADE;
 
 create sequence if not exists transaction_seq;
 

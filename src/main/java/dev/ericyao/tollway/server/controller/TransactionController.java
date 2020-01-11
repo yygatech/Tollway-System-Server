@@ -10,7 +10,7 @@ import dev.ericyao.tollway.server.dto.DetailedTransaction;
 import dev.ericyao.tollway.server.service.TransactionService;
 
 @Controller
-@RequestMapping("/transaction")
+@RequestMapping(value = {"/", "/transaction"})
 public class TransactionController {
 
 	@Autowired

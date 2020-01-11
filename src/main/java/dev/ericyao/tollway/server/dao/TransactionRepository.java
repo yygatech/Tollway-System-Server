@@ -1,7 +1,5 @@
 package dev.ericyao.tollway.server.dao;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -17,5 +15,5 @@ public interface TransactionRepository extends CrudRepository<Transaction, Long>
 					"FROM transaction t LEFT JOIN vehicle v ON t.vehicle_id = v.vehicle_id " + 
 					"ORDER BY timestamp DESC " +
 					"LIMIT 20")
-	public List<DetailedTransaction> getDetailedTransactions();
+	public Iterable<DetailedTransaction> getDetailedTransactions();
 }

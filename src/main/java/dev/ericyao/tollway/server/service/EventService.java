@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dev.ericyao.tollway.server.entity.Transaction;
+import dev.ericyao.tollway.server.entity.Vehicle;
 import dev.ericyao.tollway.server.object.Event;
 
 @Service
@@ -11,6 +12,9 @@ public class EventService {
 	
 	@Autowired
 	TransactionService tService;
+	
+	@Autowired
+	VehicleService vService;
 	
 	@Autowired
 	TollCalculator tc;
@@ -26,6 +30,13 @@ public class EventService {
 		
 		// save transaction
 		tService.saveTransaction(trans);
+		
+		// update vehicle
+		if (vService.getVehicleById(trans.getVehicleId()) == null) {
+			Vehicle v = new Vehicle(trans.getVehicleId());
+			v.setRegistered(false);
+			vService.addVehicle(v);
+		}
 		
 		return trans;
 	}

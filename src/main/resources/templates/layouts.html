@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:fragment="header">
     <!-- Required meta tags -->
@@ -13,7 +13,7 @@
 
 	<link rel="stylesheet" thLhref="@{/css/formatting.css}">
 	
-	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+	<!-- <meta http-equiv="refresh" content="10"> -->
 </head>
 
 <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -36,6 +36,43 @@
 
     </ul>
   </div>
+  	
+<!-- 	Logged user: <span sec:authentication="name">Bob</span>
+	Roles: <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span> -->
 </nav>
+
+<div th:fragment="userAccount">
+
+	<div>
+  	  This content is shown to all users.
+  	</div>
+  	<hr>
+  	<div sec:authorize="!isAuthenticated()">
+	  This content is only shown to non-authenticated users.
+	  <div><a th:href="@{/register}">Register</a></div>
+	  <div><a th:href="@{/login}">Log in</a></div>
+	</div>
+	<hr>
+	<div sec:authorize="isAuthenticated()">
+	  This content is only shown to authenticated users.
+	  	<div>
+			Logged user: <span sec:authentication="name">Bob</span>
+		</div>
+		<div>
+			Roles: <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>
+		</div>
+		<div><a th:href="@{/logout}">Log out</a></div>
+	</div>
+	<hr>
+	<div sec:authorize="hasRole('admin')">
+	  This content is only shown to administrators.
+	</div>
+	<hr>
+	<div sec:authorize="!hasRole('admin')">
+	  This content is only shown to non-admins.
+	  
+	</div>
+	
+</div>
 	
 </html>

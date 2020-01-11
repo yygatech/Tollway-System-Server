@@ -1,3 +1,10 @@
+-- INSERT USER_ACCOUNTS --
+insert into user_account (username, email, password, role, enabled)
+	values ('admin', 'admin@ericyao.dev', 'admin', 'ADMIN', true);
+
+insert into user_account (username, email, password, role, enabled)
+	values ('user', 'user@ericyao.dev', 'user', 'USER', true);
+
 -- INSERT TRANSACTIONS --
 insert into vehicle (vehicle_id, registered)
 	values ('APTX4869', true);

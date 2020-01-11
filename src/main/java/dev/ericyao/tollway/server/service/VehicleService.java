@@ -25,4 +25,8 @@ public class VehicleService {
 			return null;
 		}
 	}
+	
+	public Vehicle addVehicle(Vehicle vehicle) {
+		return vRepo.save(vehicle);
+	}
 }
