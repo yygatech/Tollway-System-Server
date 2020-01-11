@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	
-	<head th:replace="layouts :: header"></head>
+<head th:replace="layouts :: header"></head>
+
+<body>
+
+<nav th:replace="layouts :: navbar"></nav>
+
+<div class="container">
+	<hr>
+	<h3>Vehicle Directory</h3>
+	<hr>
 	
-	<body>
+		<!--  Add New Vehicle Button -->
+	<a th:href="@{/vehicle/new}"
+		class="btn btn-primary btn-sm mb-3"> 
+		Add a vehicle 
+	</a> 
+	<br></br>
 	
-	<nav th:replace="layouts :: navbar"></nav>
+	<table class="table table-bordered table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th>Vehicle ID</th>
+				<th>Registration Status</th>
+			</tr>
+		</thead>		
+		<tbody>
+			<tr th:each="aVehicle : ${vehicles}">
+				<td th:text="${aVehicle.vehicleId}"/>
+				<td th:text="${aVehicle.registered}"/>
+			</tr>
+		</tbody>
 	
-		<div class="container">
-			<h3>Vehicle Directory</h3>
-			<hr>
-			
- 			<!--  Add New Vehicle Button -->
-			<a th:href="@{/vehicle/new}"
-				class="btn btn-primary btn-sm mb-3"> 
-				Add a vehicle 
-			</a> 
-			<br></br>
-			
-			<table class="table table-bordered table-striped">
-				<thead class="thead-dark">
-					<tr>
-						<th>Vehicle ID</th>
-						<th>Registration Status</th>
-					</tr>
-				</thead>		
-				<tbody>
-					<tr th:each="aVehicle : ${vehicles}">
-						<td th:text="${aVehicle.vehicleId}"/>
-						<td th:text="${aVehicle.registered}"/>
-					</tr>
-				</tbody>
-			
-			</table>
-		</div>
-	</body>
+	</table>
+</div>
+	
+</body>
 	
 </html>

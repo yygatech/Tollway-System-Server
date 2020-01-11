@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	
-	<head th:replace="layouts :: header"></head>
+<head th:replace="layouts :: header"></head>
+
+<body>
+
+<nav th:replace="layouts :: navbar"></nav>
+
+<div class="container">
+	<hr>
+	<h3>Gate Directory</h3>
+	<hr>
 	
-	<body>
+		<!--  Add New Gate Button -->
+	<a th:href="@{/gate/new}"
+		class="btn btn-primary btn-sm mb-3"> 
+		Add a Gate 
+	</a> 
+	<br></br>
 	
-	<nav th:replace="layouts :: navbar"></nav>
+	<table class="table table-bordered table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th>Gate ID</th>
+				<th>Toll</th>
+			</tr>
+		</thead>		
+		<tbody>
+			<tr th:each="aGate : ${gates}">
+				<td th:text="${aGate.gateId}"/>
+				<td th:text="${aGate.tollInCents}"/>
+			</tr>
+		</tbody>
 	
-		<div class="container">
-			<h3>Gate Directory</h3>
-			<hr>
-			
- 			<!--  Add New Gate Button -->
-			<a th:href="@{/gate/new}"
-				class="btn btn-primary btn-sm mb-3"> 
-				Add a Gate 
-			</a> 
-			<br></br>
-			
-			<table class="table table-bordered table-striped">
-				<thead class="thead-dark">
-					<tr>
-						<th>Gate ID</th>
-						<th>Toll</th>
-					</tr>
-				</thead>		
-				<tbody>
-					<tr th:each="aGate : ${gates}">
-						<td th:text="${aGate.gateId}"/>
-						<td th:text="${aGate.tollInCents}"/>
-					</tr>
-				</tbody>
-			
-			</table>
-		</div>
-	</body>
+	</table>
+</div>
+
+</body>
 	
 </html>

@@ -33,46 +33,40 @@
       <li class="nav-item">
         <a class="nav-link" th:href="@{/vehicle}">Vehicles</a>
       </li>
+    </ul>
+    
+    <ul class="navbar-nav ml-auto">
+  	  <!-- Shown to unauthorized users -->
+   	  <li class="nav-item" sec:authorize="!isAuthenticated()">
+   	    <a class="nav-link" th:href="@{/register}">Register</a>
+   	  </li>
+   	  <li class="nav-item" sec:authorize="!isAuthenticated()">
+   	    <a class="nav-link" th:href="@{/login}">Sign In</a>
+   	  </li>
+   	  
+   	  <!-- Shown to ADMIN users -->
+   	  <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+   	    <span class="nav-link" sec:authentication="principal.authorities"></span>
+   	  </li>
+   	  
+	  <!-- Shown to authorized users -->
+	  <li class="nav-item" sec:authorize="isAuthenticated()">
+   	    <span class="nav-link">Welcome,</span>
+   	  </li>
+   	  <li class="nav-item" sec:authorize="isAuthenticated()">
+   	    <span class="nav-link" sec:authentication="name"></span>
+   	  </li>
+   	  
 
+   	  
+   	  <li class="nav-item" sec:authorize="isAuthenticated()">
+   	    <a class="nav-link" th:href="@{/logout}">Sign Out</a>
+   	  </li>
     </ul>
   </div>
   	
 <!-- 	Logged user: <span sec:authentication="name">Bob</span>
 	Roles: <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span> -->
 </nav>
-
-<div th:fragment="userAccount">
-
-	<div>
-  	  This content is shown to all users.
-  	</div>
-  	<hr>
-  	<div sec:authorize="!isAuthenticated()">
-	  This content is only shown to non-authenticated users.
-	  <div><a th:href="@{/register}">Register</a></div>
-	  <div><a th:href="@{/login}">Log in</a></div>
-	</div>
-	<hr>
-	<div sec:authorize="isAuthenticated()">
-	  This content is only shown to authenticated users.
-	  	<div>
-			Logged user: <span sec:authentication="name">Bob</span>
-		</div>
-		<div>
-			Roles: <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>
-		</div>
-		<div><a th:href="@{/logout}">Log out</a></div>
-	</div>
-	<hr>
-	<div sec:authorize="hasRole('admin')">
-	  This content is only shown to administrators.
-	</div>
-	<hr>
-	<div sec:authorize="!hasRole('admin')">
-	  This content is only shown to non-admins.
-	  
-	</div>
-	
-</div>
 	
 </html>
