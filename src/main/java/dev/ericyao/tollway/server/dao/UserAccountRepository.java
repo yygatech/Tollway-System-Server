@@ -12,4 +12,8 @@ public interface UserAccountRepository extends CrudRepository<UserAccount, Long>
 					"FROM user_account " + 
 					"WHERE password NOT SIMILAR TO '$2[aby]$%'")
 	public Iterable<UserAccount> getUnencryptedUserAccounts();
+	
+	public UserAccount findByUsername(String username);
+	
+	public UserAccount findByEmail(String email);
 }

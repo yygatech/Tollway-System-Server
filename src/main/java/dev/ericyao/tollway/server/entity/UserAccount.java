@@ -10,6 +10,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
+import dev.ericyao.tollway.server.validator.UniqueEmail;
+import dev.ericyao.tollway.server.validator.UniqueUsername;
+
 @Entity
 @Table(name = "user_account")
 public class UserAccount {
