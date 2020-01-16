@@ -10,7 +10,7 @@ public class Vehicle {
 	@Id
 	@NotNull
 	private String vehicleId;
-	private boolean registered;
+	private Boolean registered;
 	
 	public Vehicle() {
 		
@@ -29,11 +29,11 @@ public class Vehicle {
 		this.vehicleId = vehicleId;
 	}
 
-	public boolean isRegistered() {
+	public Boolean isRegistered() {
 		return registered;
 	}
 
-	public void setRegistered(boolean registered) {
+	public void setRegistered(Boolean registered) {
 		this.registered = registered;
 	}
 	

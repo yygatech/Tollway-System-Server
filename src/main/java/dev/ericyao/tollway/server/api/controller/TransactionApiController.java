@@ -31,14 +31,16 @@ public class TransactionApiController {
 		return tService.getTransactionById(id);
 	}
 	
+	// NOT IN USE
 	@PostMapping(consumes = "application/json")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Transaction processTransaction(@RequestBody Transaction trans) {
+		System.out.println("post request received");
 		return tService.saveTransaction(trans);
 	}
 	
 	@DeleteMapping("/{id}")
-	@ResponseStatus(HttpStatus.NO_CONTENT)	// TODO: different result 
+	@ResponseStatus(HttpStatus.NO_CONTENT)	// TODO: different return value 
 	public void deleteTransaction(@PathVariable("id") long id) {
 		tService.deleteTransaction(id);
 	}

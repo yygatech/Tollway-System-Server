@@ -20,9 +20,15 @@ insert into vehicle (vehicle_id, registered)
 
 -- INSERT GATES --
 insert into gate (gate_id, toll_in_cents)
-	values (101, 99);
+	values (101, 991);
 insert into gate (gate_id, toll_in_cents)
-	values (102, 999);
+	values (102, 992);
+insert into gate (gate_id, toll_in_cents)
+	values (103, 993);
+insert into gate (gate_id, toll_in_cents)
+	values (104, 994);
+insert into gate (gate_id, toll_in_cents)
+	values (105, 995);
 
 -- INSERT TRANSACTIONS --
 insert into transaction (gate_id, lane_id, timestamp, toll_in_cents, vehicle_id, transaction_id) 

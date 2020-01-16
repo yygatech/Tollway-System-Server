@@ -43,5 +43,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.formLogin()
 			.and()
 			.logout().logoutSuccessUrl("/");
+		
+		// for localhost test
+		http.csrf().disable();
 	}
 }
