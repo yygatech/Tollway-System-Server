@@ -85,6 +85,8 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		
+		<finalName>tollway-app</finalName>
 	</build>
 
 </project>
